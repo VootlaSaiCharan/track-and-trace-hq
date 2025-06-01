@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Button } from '../ui/button';
@@ -39,7 +38,7 @@ const AssignAssetModal = ({ isOpen, onClose, onSubmit, asset }: AssignAssetModal
     if (!formData.department) newErrors.department = 'Department is required';
     if (!formData.assignmentDate) newErrors.assignmentDate = 'Assignment date is required';
     
-    if (formData.assignmentDate && new Date(formData.assignmentDate) < new Date().setHours(0, 0, 0, 0)) {
+    if (formData.assignmentDate && new Date(formData.assignmentDate).getTime() < new Date().setHours(0, 0, 0, 0)) {
       newErrors.assignmentDate = 'Assignment date cannot be in the past';
     }
     
